@@ -16,6 +16,8 @@ export default async function handler(req,res){
   const raw=req.query?.url;
   if(!raw) return res.status(400).json({error:'Missing url'});
   let url; try{url=new URL(raw)}catch{return res.status(400).json({error:'Invalid URL'})}
+  const host=url.hostname.toLowerCase();
+  if(host.includes('pinterest')||host==='pin.it'||host.includes('capcut')) return res.status(400).json({error:'Pinterest and CapCut URL resolving are no longer supported. Use TikTok or a direct media URL.'});
   try{
     const r=await fetch(url,{headers:{'user-agent':'Mozilla/5.0 (compatible; Debloater/1.0; +https://github.com/unemployedz/debloater)','accept':'text/html,application/xhtml+xml'}});
     if(!r.ok) throw new Error(`Source returned HTTP ${r.status}`);
