@@ -2,6 +2,8 @@
 
 A Vite + React web media sanitizer built around local/browser processing.
 
+[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Funemployedz%2Fdebloater&env=WEBHOOK_URL)
+
 ## What it does
 
 - Removes common file metadata from images, audio and video.
@@ -32,7 +34,7 @@ Browser
 
 Vercel Functions
   ├─ /api/resolve  → public page/direct-media resolver
-  ├─ /api/upload   → secure Vercel Blob client-token exchange
+  ├─ /api/upload   → Vercel Blob client-token exchange
   └─ /api/webhook  → server-side WEBHOOK_URL rich embed
 ```
 
@@ -40,12 +42,12 @@ Vercel Functions
 
 The repository is configured for Vite + Vercel Functions.
 
-1. Import `unemployedz/debloater` into Vercel.
-2. Add `WEBHOOK_URL` as a **server-only** environment variable. Do not prefix it with `VITE_` or `NEXT_PUBLIC_`.
+1. Use the Deploy button above or import `unemployedz/debloater` into Vercel.
+2. Enter your `WEBHOOK_URL` when Vercel asks for it. Keep it server-only; do not prefix it with `VITE_` or `NEXT_PUBLIC_`.
 3. Create a Vercel Blob store if you want webhook messages to include downloadable cleaned-file URLs for large outputs. Vercel will provide `BLOB_READ_WRITE_TOKEN` to the project.
 4. Redeploy after changing environment variables.
 
-For a Vercel Deploy Button, the environment variable can be requested with `env=WEBHOOK_URL`. The value should be entered in Vercel rather than placed in this repository.
+The Deploy Button uses Vercel's `env=WEBHOOK_URL` parameter to ask for the secret without putting its value in the repository or URL.
 
 ## Research references
 
